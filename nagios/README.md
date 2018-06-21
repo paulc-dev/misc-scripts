@@ -4,5 +4,5 @@ check_backup_task.sh
 nagios_refresh.sh
 - I manage hundreds of AWS EC2 instance, and over time it was becoming problematic to try to manually add/remove instances from the nagios configuration files. This script will use the describle-instances command to generate a list of instances for a given set of filters. Then nagios configuration file for those instances is then built off of that list.
 These files exmaple templates used by nagios_refresh.sh
--- linuxNonProdAppTemplate.txt
--- linuxProdAppTemplate.txt
+- linuxNonProdAppTemplate.txt
+- linuxProdAppTemplate.txt
