@@ -1,0 +1,79 @@
+# Displays the amount of Up-Time for the machine
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     PING
+        check_command           check_ping!100.0,20%!500.0,60%
+        }
+		
+# Checks the CPU load: Averages CPU load over 5 minutes.  80%=Warn, 90%=Critical
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     CPU Load
+        check_command           check_nrpe!check_cpu
+        }		
+
+# Check memory usage: 80%=Warn, 90%=Critical
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     Check Memory
+        check_command           check_mem
+        }
+
+# Check disk space (xvda1): 70%=Warn, 85%=Critical
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     Check Disk
+        check_command           check_nrpe!check_disk_xvda1
+        }
+
+# Check disk space (xvda2) : 70%=Warn, 85%=Critical
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     Check Document Volume
+        check_command           check_nrpe!check_disk_xvda2
+        }
+
+# Checks HTTP
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     HTTP Check
+        check_command           check_http
+        }
+
+# Checks HTTPS
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     HTTPS Check
+        check_command           check_https
+        }
+
+# Checks the SSL cert - warning if expires in 25 days
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     SSL Check
+        check_command           check_ssl_cert
+        }
+
+# Checks if the Tomcat service is running
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     Tomcat Service
+        check_command           check_nrpe!check_tomcatservice
+        }
+
+# Checks that the document backup script has ran successfully
+define service{
+        use                     generic-service
+        host_name               hosts
+        service_description     Backup Script Check
+        check_command           check_nrpe!check_backup_documents_script
+        }
